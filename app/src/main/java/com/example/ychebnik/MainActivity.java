@@ -1,0 +1,25 @@
+package com.example.ychebnik;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button button = findViewById(R.id.button); // предполагая, что у вас есть кнопка с идентификатором button в вашем макете
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                View mainView = findViewById(android.R.id.content); // получение главного представления активности
+                mainView.setBackgroundColor(getResources().getColor(R.color.newBackgroundColor)); // изменение цвета фона
+            }
+        });
+    }
+}
