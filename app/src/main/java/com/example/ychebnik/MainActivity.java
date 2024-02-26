@@ -6,19 +6,24 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
+    private boolean isRed = true; // флаг для отслеживания текущего цвета
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button button = findViewById(R.id.button); // предполагая, что у вас есть кнопка с идентификатором button в вашем макете
+        Button changeColorButton = findViewById(R.id.changeColorButton);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        changeColorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                View mainView = findViewById(android.R.id.content); // получение главного представления активности
-                mainView.setBackgroundColor(getResources().getColor(R.color.newBackgroundColor)); // изменение цвета фона
+                if (isRed) {
+                    v.getRootView().setBackgroundColor(getResources().getColor(android.R.color.white)); // установка белого цвета фона
+                } else {
+                    v.getRootView().setBackgroundColor(getResources().getColor(android.R.color.holo_red_light)); // установка красного цвета фона
+                }
+                isRed = !isRed; // изменение флага цвета для следующего нажатия
             }
         });
     }
